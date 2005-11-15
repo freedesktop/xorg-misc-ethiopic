@@ -32,6 +32,20 @@ AC_PATH_PROG(MKFONTSCALE, mkfontscale)
 AC_PATH_PROG(MKFONTDIR, mkfontdir)
 AC_PATH_PROG(FCCACHE, fc-cache)
 
+DEFAULT_TTFFONTDIR=${libdir}/X11/fonts/TTF
+AC_ARG_WITH(fontdir,
+	AS_HELP_STRING([--with-ttf-fontdir=FONTDIR], [Path to install TTF fonts]),
+	[TTFFONTDIR="$withval"],
+	[TTFFONTDIR="$DEFAULT_TTFFONTDIR"])
+AC_SUBST(TTFFONTDIR)
+
+DEFAULT_OTFFONTDIR=${libdir}/X11/fonts/OTF
+AC_ARG_WITH(fontdir,
+	AS_HELP_STRING([--with-otf-fontdir=FONTDIR], [Path to install OTF fonts]),
+	[OTFFONTDIR="$withval"],
+	[OTFFONTDIR="$DEFAULT_OTFFONTDIR"])
+AC_SUBST(OTFFONTDIR)
+
 XORG_RELEASE_VERSION
 
 AC_OUTPUT([Makefile])

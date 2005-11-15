@@ -19,10 +19,10 @@
 #  NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
 #  CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-ttffontdir = $(libdir)/X11/fonts/TTF
+ttffontdir = @TTFFONTDIR@
 ttffont_DATA = GohaTibebZemen.ttf
 
-otffontdir = $(libdir)/X11/fonts/OTF
+otffontdir = @OTFFONTDIR@
 otffont_DATA = GohaTibebZemen.otf
 
 EXTRA_DIST = $(ttffont_DATA) $(otffont_DATA) license.txt autogen.sh
