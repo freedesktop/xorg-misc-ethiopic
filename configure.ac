@@ -32,6 +32,8 @@ AC_PATH_PROG(MKFONTSCALE, mkfontscale)
 AC_PATH_PROG(MKFONTDIR, mkfontdir)
 AC_PATH_PROG(FCCACHE, fc-cache)
 
+m4_ifdef([AS_HELP_STRING], , [m4_define([AS_HELP_STRING], m4_defn([AC_HELP_STRING]))])
+
 DEFAULT_TTFFONTDIR=${libdir}/X11/fonts/TTF
 AC_ARG_WITH(fontdir,
 	AS_HELP_STRING([--with-ttf-fontdir=FONTDIR], [Path to install TTF fonts]),
