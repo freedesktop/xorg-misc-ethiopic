@@ -1,3 +1,8 @@
+2005-12-08  Adam Jackson  <ajax@freedesktop.org>
+
+	* configure.ac:
+	Bug #5267: Fix AC_ARG_WITH to not lie.  (Donnie Berkholz)
+
 2005-12-03  Kevin E. Martin  <kem-at-freedesktop-dot-org>
 
 	* configure.ac:

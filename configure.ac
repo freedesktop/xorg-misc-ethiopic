@@ -35,14 +35,14 @@ AC_PATH_PROG(FCCACHE, fc-cache)
 m4_ifdef([AS_HELP_STRING], , [m4_define([AS_HELP_STRING], m4_defn([AC_HELP_STRING]))])
 
 DEFAULT_TTFFONTDIR=${libdir}/X11/fonts/TTF
-AC_ARG_WITH(fontdir,
+AC_ARG_WITH(ttf-fontdir,
 	AS_HELP_STRING([--with-ttf-fontdir=FONTDIR], [Path to install TTF fonts]),
 	[TTFFONTDIR="$withval"],
 	[TTFFONTDIR="$DEFAULT_TTFFONTDIR"])
 AC_SUBST(TTFFONTDIR)
 
 DEFAULT_OTFFONTDIR=${libdir}/X11/fonts/OTF
-AC_ARG_WITH(fontdir,
+AC_ARG_WITH(otf-fontdir,
 	AS_HELP_STRING([--with-otf-fontdir=FONTDIR], [Path to install OTF fonts]),
 	[OTFFONTDIR="$withval"],
 	[OTFFONTDIR="$DEFAULT_OTFFONTDIR"])
