@@ -29,7 +29,13 @@ AM_MAINTAINER_MODE
 AC_PROG_INSTALL
 
 AC_PATH_PROG(MKFONTSCALE, mkfontscale)
+if test x"$MKFONTSCALE" = x; then
+	AC_MSG_ERROR([mkfontscale is required to build misc-ethiopic fonts.])
+fi
 AC_PATH_PROG(MKFONTDIR, mkfontdir)
+if test x"$MKFONTDIR" = x; then
+	AC_MSG_ERROR([mkfontdir is required to build misc-ethiopic fonts.])
+fi
 AC_PATH_PROG(FCCACHE, fc-cache)
 
 m4_ifdef([AS_HELP_STRING], , [m4_define([AS_HELP_STRING], m4_defn([AC_HELP_STRING]))])
