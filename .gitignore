@@ -8,3 +8,6 @@ configure
 install-sh
 missing
 *~
+font-misc-ethiopic-*.tar.*
+ChangeLog
+tags
