@@ -26,34 +26,21 @@ AC_INIT(font-misc-ethiopic, [1.0.0], [https://bugs.freedesktop.org/enter_bug.cgi
 AM_INIT_AUTOMAKE([foreign dist-bzip2])
 AM_MAINTAINER_MODE
 
-# Require xorg-macros: XORG_CHANGELOG
-m4_ifndef([XORG_MACROS_VERSION], [AC_FATAL([must install xorg-macros 1.2 or later before running autoconf/autogen])])
-XORG_MACROS_VERSION(1.2)
+# Require xorg-macros: XORG_DEFAULT_OPTIONS
+m4_ifndef([XORG_MACROS_VERSION],
+	  [m4_fatal([must install xorg-macros 1.3 or later before running autoconf/autogen])])
+XORG_MACROS_VERSION(1.3)
+XORG_DEFAULT_OPTIONS
+
 AC_PROG_INSTALL
 
-AC_PATH_PROG(MKFONTSCALE, mkfontscale)
-if test x"$MKFONTSCALE" = x; then
-	AC_MSG_ERROR([mkfontscale is required to build misc-ethiopic fonts.])
-fi
-AC_PATH_PROG(MKFONTDIR, mkfontdir)
-if test x"$MKFONTDIR" = x; then
-	AC_MSG_ERROR([mkfontdir is required to build misc-ethiopic fonts.])
-fi
-AC_PATH_PROG(FCCACHE, fc-cache)
+# Require X.Org's font util macros 1.1 or later
+m4_ifndef([XORG_FONT_MACROS_VERSION],
+	  [m4_fatal([must install X.Org font-util 1.1 or later before running autoconf/autogen])])
+XORG_FONT_MACROS_VERSION(1.1)
 
-ttffontdir=${libdir}/X11/fonts/TTF
-AC_ARG_WITH(ttf-fontdir, AC_HELP_STRING([--with-ttf-fontdir=<pathname>],
-	[Path to install TTF fonts]), [ttffontdir="$withval"])
-TTFFONTDIR="$ttffontdir"
-AC_SUBST(TTFFONTDIR)
-
-otffontdir=${libdir}/X11/fonts/OTF
-AC_ARG_WITH(otf-fontdir, AC_HELP_STRING([--with-otf-fontdir=<pathname>],
-	[Path to install OTF fonts]), [otffontdir="$withval"])
-OTFFONTDIR="$otffontdir"
-AC_SUBST(OTFFONTDIR)
-
-XORG_RELEASE_VERSION
-XORG_CHANGELOG
+XORG_FONTSUBDIR([TTFFONTDIR], [ttf-fontdir], [TTF])
+XORG_FONTSUBDIR([OTFFONTDIR], [otf-fontdir], [OTF])
+XORG_FONT_SCALED_UTILS
 
 AC_OUTPUT([Makefile])

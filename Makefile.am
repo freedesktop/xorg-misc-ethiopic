@@ -25,6 +25,9 @@ ttffont_DATA = GohaTibebZemen.ttf
 otffontdir = @OTFFONTDIR@
 otffont_DATA = GohaTibebZemen.otf
 
+# Used by RUN_FCCACHE
+fontdir = $(ttffontdir) $(otffontdir)
+
 EXTRA_DIST = $(ttffont_DATA) $(otffont_DATA) license.txt
 
 install-data-hook:
@@ -32,30 +35,11 @@ install-data-hook:
 	$(MKFONTSCALE) $(DESTDIR)$(ttffontdir)
 	@rm -f $(DESTDIR)$(ttffontdir)/font.dir
 	$(MKFONTDIR) $(DESTDIR)$(ttffontdir)
-	@(if `test -z '$(DESTDIR)'`; then \
-		echo $(FCCACHE) $(ttffontdir); \
-		$(FCCACHE) $(ttffontdir); \
-	else \
-		echo "***"; \
-		echo "*** Warning: fonts.cache not built"; \
-		echo "***"; \
-		echo "*** Generate this file manually on host system using fc-cache"; \
-		echo "***"; \
-	fi)
 	@rm -f $(DESTDIR)$(otffontdir)/fonts.scale
 	$(MKFONTSCALE) $(DESTDIR)$(otffontdir)
 	@rm -f $(DESTDIR)$(otffontdir)/font.dir
 	$(MKFONTDIR) $(DESTDIR)$(otffontdir)
-	@(if `test -z '$(DESTDIR)'`; then \
-		echo $(FCCACHE) $(otffontdir); \
-		$(FCCACHE) $(otffontdir); \
-	else \
-		echo "***"; \
-		echo "*** Warning: fonts.cache not built"; \
-		echo "***"; \
-		echo "*** Generate this file manually on host system using fc-cache"; \
-		echo "***"; \
-	fi)
+	@RUN_FCCACHE@
 
 distuninstallcheck:
 	@:
