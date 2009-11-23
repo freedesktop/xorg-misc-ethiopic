@@ -30,6 +30,8 @@ fontdir = $(ttffontdir) $(otffontdir)
 
 EXTRA_DIST = $(ttffont_DATA) $(otffont_DATA) license.txt
 
+MAINTAINERCLEANFILES = ChangeLog INSTALL
+
 install-data-hook:
 	@rm -f $(DESTDIR)$(ttffontdir)/fonts.scale
 	$(MKFONTSCALE) $(DESTDIR)$(ttffontdir)
