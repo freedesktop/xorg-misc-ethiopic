@@ -34,6 +34,17 @@ m4_ifndef([XORG_MACROS_VERSION],
 XORG_MACROS_VERSION(1.3)
 XORG_DEFAULT_OPTIONS
 
+AC_ARG_ENABLE(truetype-install, 
+		AS_HELP_STRING([--disable-truetype-install],
+		[Disable install of truetype fonts (default: enabled)]),
+		[install_ttf=$enableval], [install_ttf=yes])
+AM_CONDITIONAL(INSTALL_TTF, [test "x$install_ttf" = xyes])
+AC_ARG_ENABLE(opentype-install, 
+		AS_HELP_STRING([--disable-opentype-install],
+		[Disable install of opentype fonts (default: enabled)]),
+		[install_otf=$enableval], [install_otf=yes])
+AM_CONDITIONAL(INSTALL_OTF, [test "x$install_otf" = xyes])
+
 AC_PROG_INSTALL
 
 # Require X.Org's font util macros 1.2 or later
