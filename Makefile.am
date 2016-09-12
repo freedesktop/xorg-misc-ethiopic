@@ -36,13 +36,13 @@ install-data-hook:
 if INSTALL_TTF
 	@rm -f $(DESTDIR)$(ttffontdir)/fonts.scale
 	$(MKFONTSCALE) $(DESTDIR)$(ttffontdir)
-	@rm -f $(DESTDIR)$(ttffontdir)/font.dir
+	@rm -f $(DESTDIR)$(ttffontdir)/fonts.dir
 	$(MKFONTDIR) $(DESTDIR)$(ttffontdir)
 endif
 if INSTALL_OTF
 	@rm -f $(DESTDIR)$(otffontdir)/fonts.scale
 	$(MKFONTSCALE) $(DESTDIR)$(otffontdir)
-	@rm -f $(DESTDIR)$(otffontdir)/font.dir
+	@rm -f $(DESTDIR)$(otffontdir)/fonts.dir
 	$(MKFONTDIR) $(DESTDIR)$(otffontdir)
 endif
 	@RUN_FCCACHE@
